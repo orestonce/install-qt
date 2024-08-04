@@ -1,0 +1,2 @@
+# install-qt
+install qt
