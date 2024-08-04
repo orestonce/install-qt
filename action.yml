@@ -24,8 +24,8 @@ install_job_windows:
       uses: actions/include@v1
       with:
         path: './sub-workflow-windows.yml'
-        dir: ${{ inputs.dir }}
-        version: ${{ inputs.version }}
+        #dir: ${{ inputs.dir }}
+        #version: ${{ inputs.version }}
 
 install_job_macos:
   runs-on: macos-latest
@@ -34,5 +34,5 @@ install_job_macos:
       uses: actions/include@v1
       with:
         path: './sub-workflow-macos.yml'
-        dir: ${{ inputs.dir }}
-        version: ${{ inputs.version }}
+        #dir: ${{ inputs.dir }}
+        #version: ${{ inputs.version }}
