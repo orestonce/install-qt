@@ -17,8 +17,8 @@ install_job_windows:
   steps:
     - name: t
       run: |
-        echo ${{ inputs.dir }}
-        echo ${{ inputs.version }}
+        echo "${{ inputs.dir }}"
+        echo "${{ inputs.version }}"
         
     - name: Call Sub Workflow
       uses: actions/include@v1
