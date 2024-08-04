@@ -15,6 +15,11 @@ inputs:
 install_job_windows:
   runs-on: windows-latest
   steps:
+    - name: t
+      run: |
+        echo ${{ inputs.dir }}
+        echo ${{ inputs.version }}
+        
     - name: Call Sub Workflow
       uses: actions/include@v1
       with:
