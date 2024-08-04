@@ -17,6 +17,7 @@ runs:
   steps:
   - name: t
     shell: powershell
+    using: composite
     run: |
       echo "${{ inputs.dir }}"
       echo "${{ inputs.version }}"
