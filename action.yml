@@ -16,8 +16,9 @@ install_job_windows:
   runs-on: windows-latest
   steps:
     - name: Call Sub Workflow
-      uses: './sub-workflow-windows.yml'
+      uses: actions/include@v1
       with:
+        path: './sub-workflow-windows.yml'
         dir: ${{ inputs.dir }}
         version: ${{ inputs.version }}
 
@@ -25,7 +26,8 @@ install_job_macos:
   runs-on: macos-latest
   steps:
     - name: Call Sub Workflow
-      uses: './sub-workflow-macos.yml'
+      uses: actions/include@v1
       with:
+        path: './sub-workflow-macos.yml'
         dir: ${{ inputs.dir }}
         version: ${{ inputs.version }}
