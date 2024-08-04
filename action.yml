@@ -15,10 +15,11 @@ inputs:
     required: true
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
     
-install_job_windows:
-  using: "composite"
-  runs-on: windows-latest
-  steps:
+jobs:
+  install_job_windows:
+    using: "composite"
+    runs-on: windows-latest
+    steps:
     - name: t
       run: |
         echo "${{ inputs.dir }}"
@@ -31,10 +32,10 @@ install_job_windows:
         #dir: ${{ inputs.dir }}
         #version: ${{ inputs.version }}
 
-install_job_macos:
-  using: "composite"
-  runs-on: macos-latest
-  steps:
+  install_job_macos:
+    using: "composite"
+    runs-on: macos-latest
+    steps:
     - name: Call Sub Workflow
       uses: actions/include@v1
       with:
