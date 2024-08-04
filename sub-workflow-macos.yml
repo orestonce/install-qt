@@ -4,9 +4,11 @@ inputs:
   dir:
     description: Directory to install Qt
     default: "qt_static_install"
+    required: false
+    
   version:
     description: Version of Qt to install
-    default: "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527"
+    required: true
     
 jobs:
   runs-on: macos-latest
