@@ -16,6 +16,7 @@ inputs:
 runs:
   steps:
   - name: t
+    shell: powershell
     run: |
       echo "${{ inputs.dir }}"
       echo "${{ inputs.version }}"
