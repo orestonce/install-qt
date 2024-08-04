@@ -1,0 +1,18 @@
+name: Sub Workflow of macos
+
+inputs:
+  dir:
+    description: Directory to install Qt
+    default: "qt_static_install"
+  version:
+    description: Version of Qt to install
+    default: "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527"
+    
+jobs:
+  runs-on: macos-latest
+  - name: install Qt of macos to dir
+    shell: bash
+    run: |
+      echo macos-test
+      echo "${{ inputs.version }}"
+      echo "${{ inputs.dir }}"

@@ -1,0 +1,31 @@
+name: Install Qt Static
+description: Install Qt Static on your Github Actions workflows with just one simple action
+author: orestonce
+branding:
+  icon: package
+  color: green
+inputs:
+  dir:
+    description: Directory to install Qt
+    default: "qt_static_install"
+  version:
+    description: Version of Qt to install
+    default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
+
+install_job_windows:
+  runs-on: windows-latest
+  steps:
+    - name: Call Sub Workflow
+      uses: './sub-workflow-windows.yml'
+      with:
+        dir: ${{ inputs.dir }}
+        version: ${{ inputs.version }}
+
+install_job_macos:
+  runs-on: macos-latest
+  steps:
+    - name: Call Sub Workflow
+      uses: './sub-workflow-macos.yml'
+      with:
+        dir: ${{ inputs.dir }}
+        version: ${{ inputs.version }}
