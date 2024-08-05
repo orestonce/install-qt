@@ -32,7 +32,7 @@ runs:
       echo "${{ inputs.version }}"
       echo "xxxx-windows-end"
       
-install_job_macos:
+runs: #install_job_macos
   using: composite
   steps:
   - name: Call Sub Workflow
@@ -41,6 +41,7 @@ install_job_macos:
       path: './sub-workflow-macos.yml'
       dir: ${{ inputs.dir }}
       version: ${{ inputs.version }}
+      
   - name: show macos message
     shell: bash
     run: |
