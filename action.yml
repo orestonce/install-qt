@@ -5,17 +5,15 @@ branding:
   icon: package
   color: green
 
-on:
-  workflow_dispatch:
-    inputs:
-      dir:
-        description: Directory to install Qt
-        required: false
-        default: "qt_static_install"
-      version:
-        description: Version of Qt to install
-        required: true
-        default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
+inputs:
+  dir:
+    description: Directory to install Qt
+    required: false
+    default: "qt_static_install"
+  version:
+    description: Version of Qt to install
+    required: true
+    default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
 jobs:
   first_job:
