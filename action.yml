@@ -15,6 +15,7 @@ inputs:
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 runs:
   using: composite
+  steps:
   - name: t
     shell: powershell
     run: |
