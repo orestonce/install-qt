@@ -9,7 +9,7 @@ inputs:
     dir:
       description: Directory to install Qt
       required: false
-      default: "qt_static_install"
+      default: "qt_install"
     version:
       description: Version of Qt to install
       required: true
@@ -82,3 +82,25 @@ runs:
           if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
             .\qt_install\QQtPatcher.exe
           }
+          
+      - name: install Qt to dir, macos
+        shell: bash
+        if: runner.os == 'macos'
+        run: |
+          set -x
+          set -e
+          case ${{ inputs.version }} in
+            "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527")
+                var_qt_URL="https://github.com/orestonce/action/releases/download/qt5.15.14/Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527.tar.xz"
+                var_qt_dir_name="Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework"
+                ;;
+            *)
+                echo "invalid version value: ${{ inputs.version }}"
+                exit -1
+                ;;
+          esac
+          mkdir -p ${{ inputs.dir }} && cd ${{ inputs.dir }}
+          var_qt_xz=${var_qt_URL##*/}
+          curl -L $var_qt_URL -o var_qt_xz
+          tar xf $var_qt_xz
+          chmod +x $var_qt_dir_name/bin/*
