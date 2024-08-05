@@ -15,35 +15,93 @@ inputs:
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
 runs:
-  using: composite
-  steps:
-  - name: checkout action
-    uses: actions/checkout@v4
-    
-  - name: Call Sub Workflow
-    uses: './windows'
-    with:
-      dir: ${{ inputs.dir }}
-      version: ${{ inputs.version }}
+  windows_job:
+    using: composite
+    runs-on: macos-latest
+    steps:
+    - name: install Qt of windows to dir
+      shell: powershell
+      run: |
+        switch ( "${{ inputs.version }}" ) {
+            "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104" {
+              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104-ManualPatchSslLib.7z"
+              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
+              $var_qt_dir_name = "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104"
+              $var_mingw_dir_name = "mingw32"
+              break
+            }
+            "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104" {
+              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104.7z"
+              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+              $var_qt_dir_name = "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull"
+              $var_mingw_dir_name = "mingw32"
+              break
+            }
+            "Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104" {
+              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104.7z"
+              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
+              $var_qt_dir_name = "Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull"
+              $var_mingw_dir_name = "mingw64"
+              break
+            }
+            "Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527" {
+              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt6.5.3/Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527.7z"
+              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt6.5.3/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z"
+              $var_qt_dir_name = "Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull"
+              $var_mingw_dir_name = "mingw64"
+              break
+            }
+            default {
+               echo "invalid version value: ${{ inputs.version }}"
+               exit -1
+               break
+            }
+          }
+        $var_qt_7z = $var_qt_URL.Substring($var_qt_URL.lastIndexOf('/')+1)
+        $var_mingw_7z = $var_mingw_URL.Substring($var_mingw_URL.lastIndexOf('/')+1)
       
-  - name: show windows message
-    shell: powershell
-    run: |
-      echo "xxxx-windows-begin"
-      echo "${{ inputs.dir }}"
-      echo "${{ inputs.version }}"
-      echo "xxxx-windows-end"
+        New-Item -ItemType Directory -Force -Path ${{ inputs.dir }}
+        cd ${{ inputs.dir }}
+        Invoke-WebRequest -URI $var_qt_URL    -OutFile $var_qt_7z
+        Invoke-WebRequest -URI $var_mingw_URL -OutFile $var_mingw_7z
       
-  - name: Call Sub Workflow
-    uses: './macos'
-    with:
-      dir: ${{ inputs.dir }}
-      version: ${{ inputs.version }}
+        7z x $var_qt_7z
+        7z x $var_mingw_7z
       
-  - name: show macos message
-    shell: bash
-    run: |
-      echo "xxxx-macos-begin"
-      echo "${{ inputs.dir }}"
-      echo "${{ inputs.version }}"
-      echo "xxxx-macos-end"
+        Remove-Item -Recurse -Force $var_qt_7z
+        Remove-Item -Recurse -Force $var_mingw_7z
+      
+        if ( $var_qt_dir_name -ne 'qt_install') {
+            move $var_qt_dir_name qt_install
+        }
+        if ( $var_mingw_dir_name -ne 'mingw_install') {
+            move $var_mingw_dir_name mingw_install
+        }
+    - name: setup Qt env
+      shell: powershell
+      run: |
+        cd ${{ inputs.dir }}
+        Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
+        Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
+        if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
+          .\qt_install\QQtPatcher.exe
+        }
+      
+    - name: show windows message
+      shell: powershell
+      run: |
+        echo "xxxx-windows-begin"
+        echo "${{ inputs.dir }}"
+        echo "${{ inputs.version }}"
+        echo "xxxx-windows-end"
+  macos_job:
+    using: composite
+    runs-on: macos-latest
+    steps:
+    - name: show macos message
+      shell: bash
+      run: |
+        echo "xxxx-macos-begin"
+        echo "${{ inputs.dir }}"
+        echo "${{ inputs.version }}"
+        echo "xxxx-macos-end"
