@@ -32,9 +32,6 @@ runs:
       echo "${{ inputs.version }}"
       echo "xxxx-windows-end"
       
-runs: #install_job_macos
-  using: composite
-  steps:
   - name: Call Sub Workflow
     uses: actions/include@v1
     with:
