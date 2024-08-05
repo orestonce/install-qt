@@ -17,9 +17,9 @@ on:
         default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
 runs:
-    name: My first job
     steps:
       - name: Print the input name to STDOUT
+        shell: powershell
         run: echo The username is ${{ inputs.dir }}
         
       - name: install Qt to dir, windows
