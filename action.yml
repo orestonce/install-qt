@@ -20,7 +20,7 @@ on:
 jobs:
   first_job:
     name: My first job
-    using: composite
+    runs-on: windows-latest
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.dir }}
