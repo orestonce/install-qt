@@ -17,12 +17,9 @@ inputs:
 runs:
     using: composite
     steps:
-      - name: Print the input name to STDOUT
-        shell: powershell
-        run: echo "The username is ${{ inputs.dir }}"
-        
       - name: install Qt to dir, windows
         shell: powershell
+        if: runner.os == 'windows'
         run: |
           switch ( "${{ inputs.version }}" ) {
             "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104" {
@@ -79,20 +76,10 @@ runs:
           if ( $var_mingw_dir_name -ne 'mingw_install') {
             move $var_mingw_dir_name mingw_install
           }
-      - name: setup Qt env, windows
-        shell: powershell
-        run: |
+          #setup Qt env, windows
           cd ${{ inputs.dir }}
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
             .\qt_install\QQtPatcher.exe
           }
-    
-      - name: show windows message
-        shell: powershell
-        run: |
-          echo "xxxx-windows-begin"
-          echo "${{ inputs.dir }}"
-          echo "${{ inputs.version }}"
-          echo "xxxx-windows-end"
