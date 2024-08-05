@@ -105,3 +105,4 @@ runs:
           tar xf $var_qt_xz
           cd $var_qt_dir_name/bin/
           chmod +x *
+          echo "$(pwd)" >> $GITHUB_PATH
