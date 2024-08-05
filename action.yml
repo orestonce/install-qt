@@ -101,7 +101,7 @@ runs:
           esac
           mkdir -p ${{ inputs.dir }} && cd ${{ inputs.dir }}
           var_qt_xz=${var_qt_URL##*/}
-          curl -L $var_qt_URL -o var_qt_xz
+          curl -L $var_qt_URL -o $var_qt_xz
           tar xf $var_qt_xz
           cd $var_qt_dir_name/bin/
           chmod +x *
