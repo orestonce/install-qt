@@ -23,7 +23,7 @@ jobs:
     - name: install Qt to dir, windows
       shell: powershell
       run: |
-        switch ( "${{ inputs.version }}" ) {
+        switch ( "${{ github.event.inputs.version }}" ) {
           "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104" {
             $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104-ManualPatchSslLib.7z"
             $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
@@ -53,7 +53,7 @@ jobs:
             break
           }
           default {
-             echo "invalid version value: ${{ inputs.version }}"
+             echo "invalid version value: ${{ github.event.inputs.version }}"
              exit -1
              break
           }
@@ -61,8 +61,8 @@ jobs:
         $var_qt_7z = $var_qt_URL.Substring($var_qt_URL.lastIndexOf('/')+1)
         $var_mingw_7z = $var_mingw_URL.Substring($var_mingw_URL.lastIndexOf('/')+1)
      
-        New-Item -ItemType Directory -Force -Path ${{ inputs.dir }}
-        cd ${{ inputs.dir }}
+        New-Item -ItemType Directory -Force -Path ${{ github.event.inputs.dir }}
+        cd ${{ github.event.inputs.dir }}
         Invoke-WebRequest -URI $var_qt_URL    -OutFile $var_qt_7z
         Invoke-WebRequest -URI $var_mingw_URL -OutFile $var_mingw_7z
     
@@ -81,10 +81,10 @@ jobs:
     - name: setup Qt env, windows
       shell: powershell
       run: |
-        cd ${{ inputs.dir }}
+        cd ${{ github.event.inputs.dir }}
         Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
         Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
-        if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
+        if ( '${{ github.event.inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
           .\qt_install\QQtPatcher.exe
         }
     
@@ -92,6 +92,6 @@ jobs:
       shell: powershell
       run: |
         echo "xxxx-windows-begin"
-        echo "${{ inputs.dir }}"
-        echo "${{ inputs.version }}"
+        echo "${{ github.event.inputs.dir }}"
+        echo "${{ github.event.inputs.version }}"
         echo "xxxx-windows-end"
