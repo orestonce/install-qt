@@ -22,6 +22,10 @@ jobs:
     name: My first job
     using: composite
     steps:
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.dir }}
+        
+    steps:
     - name: install Qt to dir, windows
       shell: powershell
       run: |
