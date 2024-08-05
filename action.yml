@@ -16,9 +16,8 @@ on:
         required: true
         default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
-jobs:
+runs:
     name: My first job
-    runs-on: ubuntu-latest
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.dir }}
