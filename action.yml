@@ -77,7 +77,6 @@ runs:
             move $var_mingw_dir_name mingw_install
           }
           #setup Qt env, windows
-          cd ${{ inputs.dir }}
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
