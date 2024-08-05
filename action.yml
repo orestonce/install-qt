@@ -15,9 +15,9 @@ inputs:
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 runs:
   steps:
+  using: composite
   - name: t
     shell: powershell
-    using: composite
     run: |
       echo "${{ inputs.dir }}"
       echo "${{ inputs.version }}"
