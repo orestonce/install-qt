@@ -20,7 +20,10 @@ jobs:
     name: My first job
     runs-on: windows-latest
     with:
-      inputs: $${{ inputs }}
+      inputs: 
+        dir: $${{ inputs.dir }}
+        version: $${{ inputs.version }}
+        
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.dir }}
