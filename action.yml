@@ -4,26 +4,22 @@ author: orestonce
 branding:
   icon: package
   color: green
-
-inputs:
-  dir:
-    description: Directory to install Qt
-    required: false
-    default: "qt_static_install"
-  version:
-    description: Version of Qt to install
-    required: true
-    default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
+on:
+  workflow_call:
+    inputs:
+      dir:
+        description: Directory to install Qt
+        required: false
+        default: "qt_static_install"
+      version:
+        description: Version of Qt to install
+        required: true
+        default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
 jobs:
   first_job:
     name: My first job
     runs-on: windows-latest
-    with:
-      inputs: 
-        dir: $${{ inputs.dir }}
-        version: $${{ inputs.version }}
-        
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.dir }}
