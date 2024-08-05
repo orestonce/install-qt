@@ -15,7 +15,6 @@ inputs:
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
 
 runs:
-  runs-on: windows-latest
   using: composite
   steps:
   - name: Call Sub Workflow
@@ -34,7 +33,6 @@ runs:
       echo "xxxx-windows-end"
       
 install_job_macos:
-  runs-on: macos-latest
   using: composite
   steps:
   - name: Call Sub Workflow
