@@ -16,7 +16,6 @@ inputs:
 
 runs:
   using: composite
-  runs-on: macos-latest
   steps:
   - name: install Qt to dir, windows
     if: ${{ runner.os == 'windows-latest' }}
