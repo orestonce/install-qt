@@ -10,8 +10,10 @@ inputs:
     description: Version of Qt to install
     required: true
     
-jobs:
+runs:
+  using: "composite"
   runs-on: macos-latest
+  steps:
   - name: install Qt of macos to dir
     shell: bash
     run: |

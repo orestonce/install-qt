@@ -11,7 +11,9 @@ inputs:
     required: true
     
 jobs:
+  using: "composite"
   runs-on: windows-latest
+  steps:
   - name: install Qt of windows to dir
     shell: powershell
     run: |

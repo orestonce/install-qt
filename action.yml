@@ -13,11 +13,40 @@ inputs:
     description: Version of Qt to install
     required: true
     default: "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104"
-runs:
+
+install_job_windows:
+  runs-on: windows-latest
   using: composite
   steps:
-  - name: t
+  - name: Call Sub Workflow
+    uses: actions/include@v1
+    with:
+      path: './sub-workflow-windows.yml'
+      dir: ${{ inputs.dir }}
+      version: ${{ inputs.version }}
+      
+  - name: show windows message
     shell: powershell
     run: |
+      echo "xxxx-windows-begin"
       echo "${{ inputs.dir }}"
       echo "${{ inputs.version }}"
+      echo "xxxx-windows-end"
+      
+install_job_macos:
+  runs-on: macos-latest
+  using: composite
+  steps:
+  - name: Call Sub Workflow
+    uses: actions/include@v1
+    with:
+      path: './sub-workflow-macos.yml'
+      dir: ${{ inputs.dir }}
+      version: ${{ inputs.version }}
+  - name: show macos message
+    shell: bash
+    run: |
+      echo "xxxx-macos-begin"
+      echo "${{ inputs.dir }}"
+      echo "${{ inputs.version }}"
+      echo "xxxx-macos-end"
