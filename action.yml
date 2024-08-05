@@ -18,9 +18,8 @@ runs:
   using: composite
   steps:
   - name: Call Sub Workflow
-    uses: actions/include@v1
+    uses: './sub-workflow-windows.yml'
     with:
-      path: './sub-workflow-windows.yml'
       dir: ${{ inputs.dir }}
       version: ${{ inputs.version }}
       
@@ -33,9 +32,8 @@ runs:
       echo "xxxx-windows-end"
       
   - name: Call Sub Workflow
-    uses: actions/include@v1
+    uses: './sub-workflow-macos.yml'
     with:
-      path: './sub-workflow-macos.yml'
       dir: ${{ inputs.dir }}
       version: ${{ inputs.version }}
       
