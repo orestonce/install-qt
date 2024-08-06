@@ -20,10 +20,14 @@
 	<td>arch</td>
     </tr>
     <tr>
-        <td rowspan="3">windows</td>
-	<td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
+        <td rowspan="4">windows</td>
+	<td>Qt4.8.7-Windows-x86-MinGW4.9.4-20200104</td>
 	<td>x86</td>
     </tr>
+    <tr>
+        <td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
+	<td>x86</td>
+    </tr>	
     <tr>
         <td>Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104</td>
 	<td>x86</td>

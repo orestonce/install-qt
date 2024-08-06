@@ -21,6 +21,8 @@ jobs:
       - name: qmake
         run: |
           qmake -v
+          gcc -v
+          g++ -v
   macos-test:
     strategy:
       matrix:
