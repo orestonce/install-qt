@@ -3,7 +3,7 @@
 使用方法:
 
 	- name: install qt static
-	  uses: orestonce/install-qt-static@v0.4.3
+	  uses: orestonce/install-qt@main
 	  with:
 		version: Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104
 
