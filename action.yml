@@ -23,8 +23,8 @@ runs:
         run: |
           switch ( "${{ inputs.version }}" ) {
             "Qt4.8.7-Windows-x86-MinGW4.9.4-20200104" {
-              $var_qt_URL = "https://sourceforge.net/projects/fsu0413-qtbuilds/files/Qt4.8/Windows-x86/Qt4.8.7-Windows-x86-MinGW4.9.4-20200104.7z"
-              $var_mingw_URL = "https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/4.9.4/threads-posix/dwarf/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt4.8.7/Qt4.8.7-Windows-x86-MinGW4.9.4-20200104.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt4.8.7/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
               $var_qt_dir_name = "Qt4.8.7-Windows-x86-MinGW4.9.4-20200104"
               $var_mingw_dir_name = "mingw32"
               break
