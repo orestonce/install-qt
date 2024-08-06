@@ -19,7 +19,7 @@
         <td>version</td>
     </tr>
     <tr>
-        <td rowspan="4">windows</td>
+        <td rowspan="5">windows</td>
 	<td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
     </tr>
     <tr>
@@ -27,9 +27,6 @@
     </tr>
     <tr>
         <td>Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104</td>
-    </tr>
-    <tr>
-        <td>Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527</td>
     </tr>
     <tr>
 	<td rowspan="1">macos</td>
