@@ -20,4 +20,4 @@ jobs:
           version: ${{ matrix.version }}
       - name: qmake
         run: |
-          qmake
+          qmake -v
