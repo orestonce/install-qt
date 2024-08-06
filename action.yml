@@ -97,6 +97,9 @@ runs:
                 var_qt_URL="https://github.com/orestonce/action/releases/download/qt5.15.14/Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527.tar.xz"
                 var_qt_dir_name="Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework"
                 ;;
+            "Qt5.15.6-macOS-x86_64-AppleClang12.0.5-noFramework-20220914")
+                var_qt_URL="https://github.com/orestonce/action/releases/download/qt-static5.15.6/Qt5.15.6-macOS-x86_64-AppleClang12.0.5-noFramework-20220914.tar.xz"
+                var_qt_dir_name="Qt5.15.6-macOS-x86_64-AppleClang12.0.5-noFramework"
             *)
                 echo "invalid version value: ${{ inputs.version }}"
                 exit -1
