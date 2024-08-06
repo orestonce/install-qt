@@ -19,7 +19,7 @@
         <td>version</td>
     </tr>
     <tr>
-        <td rowspan="5">windows</td>
+        <td rowspan="3">windows</td>
 	<td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
     </tr>
     <tr>
