@@ -77,8 +77,11 @@ runs:
             move $var_mingw_dir_name mingw_install
           }
           #setup Qt env, windows
+          $oldContent = Get-Content -Path $env:GITHUB_PATH
+          Clear-Content -Path $env:GITHUB_PATH
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
+          $oldContent | Add-Content -Path $env:GITHUB_PATH
           if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
             .\qt_install\QQtPatcher.exe
           }
