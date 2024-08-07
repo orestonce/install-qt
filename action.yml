@@ -184,3 +184,5 @@ runs:
           cd ${{ inputs.dir }}/qt_install/bin/
           chmod +x *
           echo "$(pwd)" >> $GITHUB_PATH
+          uname -a
+          file qmake
