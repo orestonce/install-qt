@@ -131,7 +131,11 @@ runs:
           if ( $var_mingw_dir_name -ne 'mingw_install') {
             move $var_mingw_dir_name mingw_install
           }
-          #setup Qt env, windows
+      - name: setup Qt env, windows
+        shell: powershell
+        if: runner.os == 'windows'
+        run: |
+          cd ${{ inputs.dir }}
           $oldContent = Get-Content -Path $env:GITHUB_PATH
           Clear-Content -Path $env:GITHUB_PATH
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
@@ -174,6 +178,13 @@ runs:
           var_qt_xz=${var_qt_URL##*/}
           curl -L $var_qt_URL -o $var_qt_xz
           tar xf $var_qt_xz
-          cd $var_qt_dir_name/bin/
+          if [ $var_qt_dir_name != "qt_install" ]; then
+            move $var_qt_dir_name qt_install
+          fi
+      - name: setup Qt env, macos
+        shell: bash
+        if: runner.os == 'macos'
+        run: |
+          cd qt_install/bin/
           chmod +x *
           echo "$(pwd)" >> $GITHUB_PATH
