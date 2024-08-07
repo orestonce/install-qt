@@ -42,6 +42,7 @@ jobs:
     strategy:
       matrix:
         version: [Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202, Qt5.15.6-macOS-x86_64-AppleClang12.0.5-noFramework-20220914, Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527, Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621]
+        example_proj_url: ["https://github.com/orestonce/install-qt/releases/download/etc/helloworld.zip"]
     # The type of runner that the job will run on
     runs-on: macos-latest
 
@@ -51,6 +52,22 @@ jobs:
         uses: orestonce/install-qt@main
         with:
           version: ${{ matrix.version }}
-      - name: qmake
+      - name: command test
         run: |
           qmake -v
+          clang -v
+          clang++ -v
+      - name: build test
+        run: |
+          var_proj_7z="${'${{ matrix.example_proj_url }}'##*/}"
+          var_proj_dir="${var_proj_7z%%.*}"
+          
+          curl -L ${{ matrix.example_proj_url }} > $var_proj_7z
+          
+          dir $var_proj_7z
+          7z x $var_proj_7z
+          dir .
+          cd $var_proj_dir
+          dir .
+          qmake -makefile
+          make
