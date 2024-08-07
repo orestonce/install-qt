@@ -27,6 +27,8 @@ runs:
               $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
               $var_qt_dir_name = "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104"
               $var_mingw_dir_name = "mingw32"
+              $var_md5_qt_7z = "9FC57FE49FF50D7F1BC75B0719899711"
+              $var_md5_mingw_7z = "7A5EC2F88844351C177509DB9DBEF9AE"
               break
             }
             "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104" {
@@ -69,6 +71,15 @@ runs:
           
           $calculatedHash1 = (Get-FileHash -Path $var_qt_7z -Algorithm MD5).Hash
           $calculatedHash2 = (Get-FileHash -Path $var_mingw_7z -Algorithm MD5).Hash
+          
+          if ( (-not $var_md5_qt_7z) -or ($calculatedHash1 -ne $var_md5_qt_7z) ) {
+            Write-Host "MD5 check error calculatedHash1: $calculatedHash1, var_md5_qt_7z: $var_md5_qt_7z"
+            exit -2
+          }
+          if ( (-not $var_md5_qt_7z) -or ($calculatedHash1 -ne $var_md5_mingw_7z) ) {
+            Write-Host "MD5 check error calculatedHash1: $calculatedHash2, var_md5_mingw_7z: $var_md5_mingw_7z"
+            exit -3
+          }
           
           echo "hash1 var_qt_7z " $calculatedHash1
           echo "hash2 var_mingw_7z " $calculatedHash2
