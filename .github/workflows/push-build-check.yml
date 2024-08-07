@@ -26,10 +26,10 @@ jobs:
           g++ -v
       - name: build test
         run: |
-          $var_proj_7z = $example_proj_url.Substring($example_proj_url.lastIndexOf('/')+1)
+          $var_proj_7z = ${{ matrix.version }}.Substring(${{ matrix.version }}.lastIndexOf('/')+1)
           $var_proj_dir = $var_proj_7z.Substring($var_proj_7z.lastIndexOf('.')+1)
           
-          Invoke-WebRequest -URI $example_proj_url -OutFile $var_proj_7z
+          Invoke-WebRequest -URI ${{ matrix.version }} -OutFile $var_proj_7z
           
           dir $var_proj_7z
           7z x $var_proj_7z
