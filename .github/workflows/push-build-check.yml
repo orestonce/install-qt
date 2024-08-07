@@ -59,7 +59,8 @@ jobs:
           clang++ -v
       - name: build test
         run: |
-          var_proj_7z="${'${{ matrix.example_proj_url }}'##*/}"
+          temp_str="${{ matrix.example_proj_url }}"
+          var_proj_7z=${temp_str##*/}
           var_proj_dir="${var_proj_7z%%.*}"
           
           curl -L ${{ matrix.example_proj_url }} > $var_proj_7z
