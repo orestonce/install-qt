@@ -33,6 +33,8 @@ jobs:
           
           dir $var_proj_7z
           7z x $var_proj_7z
+          dir .
+          echo $var_proj_dir
           cd $var_proj_dir
           dir .
           qmake -makefile
