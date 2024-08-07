@@ -35,7 +35,7 @@ jobs:
           7z x $var_proj_7z
           cd $var_proj_dir
           pwd
-          qmake
+          qmake -makefile
           make
   macos-test:
     strategy:
