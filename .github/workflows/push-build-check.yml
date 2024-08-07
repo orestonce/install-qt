@@ -34,7 +34,7 @@ jobs:
           dir $var_proj_7z
           7z x $var_proj_7z
           cd $var_proj_dir
-          pwd
+          dir .
           qmake -makefile
           make
   macos-test:
