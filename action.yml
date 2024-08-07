@@ -17,9 +17,15 @@ inputs:
 runs:
     using: composite
     steps:
+      - name: Cache Primes
+        id: install_qt
+        uses: actions/cache@v3
+        with:
+          path: ${{ inputs.dir }}
+          key: ${{ inputs.version }}
       - name: install Qt to dir, windows
         shell: powershell
-        if: runner.os == 'windows'
+        if: runner.os == 'windows' && steps.install_qt.outputs.cache-hit != 'true'
         run: |
           switch ( "${{ inputs.version }}" ) {
             "Qt4.8.7-Windows-x86-MinGW4.9.4-20200104" {
@@ -138,7 +144,7 @@ runs:
           
       - name: install Qt to dir, macos
         shell: bash
-        if: runner.os == 'macos'
+        if: runner.os == 'macos' && steps.install_qt.outputs.cache-hit != 'true'
         run: |
           set -x
           set -e
