@@ -27,7 +27,7 @@ jobs:
       - name: build test
         run: |
           $var_proj_7z = '${{ matrix.example_proj_url }}'.Substring('${{ matrix.example_proj_url }}'.lastIndexOf('/')+1)
-          $var_proj_dir = ($var_proj_7z -split '.')[0]
+          $var_proj_dir = $var_proj_7z.subString(0, $var_proj_7z.lastIndexOf('.'))
           
           Invoke-WebRequest -URI ${{ matrix.example_proj_url }} -OutFile $var_proj_7z
           
