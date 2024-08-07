@@ -92,7 +92,7 @@ runs:
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           $oldContent | Add-Content -Path $env:GITHUB_PATH
-          if ( '${{ inputs.version }}' -eq 'Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104') {
+          if (Test-Path "qt_install\QQtPatcher.exe") {
             .\qt_install\QQtPatcher.exe
           }
           
