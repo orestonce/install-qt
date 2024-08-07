@@ -74,4 +74,4 @@ jobs:
           qmake -makefile
           make
           ls .
-          file ${var_proj_dir}.app
+          file ${var_proj_dir}.app/Contents/MacOS/${var_proj_dir}
