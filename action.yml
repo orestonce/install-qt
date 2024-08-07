@@ -23,8 +23,8 @@ runs:
         run: |
           switch ( "${{ inputs.version }}" ) {
             "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104" {
-              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104-ManualPatchSslLib.7z"
-              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt-static5.6.3/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.6.3/Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104-ManualPatchSslLib.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.6.3/i686-4.9.4-release-posix-dwarf-rt_v5-rev0.7z"
               $var_qt_dir_name = "Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104"
               $var_mingw_dir_name = "mingw32"
               $var_md5_qt_7z = "9FC57FE49FF50D7F1BC75B0719899711"
@@ -32,24 +32,30 @@ runs:
               break
             }
             "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104" {
-              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104.7z"
-              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.7/Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.7/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
               $var_qt_dir_name = "Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull"
               $var_mingw_dir_name = "mingw32"
+              $var_md5_qt_7z = "2CB541AF6FC373C2C49BFABA739DBCB1"
+              $var_md5_mingw_7z = "07583A272282F71E6E8701B2BF64FAFE"
               break
             }
             "Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104" {
-              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104.7z"
-              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt5.15.7/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.7/Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.7/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
               $var_qt_dir_name = "Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull"
               $var_mingw_dir_name = "mingw64"
+              $var_md5_qt_7z = "21F5D197D4C49147A1FA2DBE3668D8B3"
+              $var_md5_mingw_7z = "55C00CA779471DF6FAF1C9320E49B5A9"
               break
             }
             "Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527" {
-              $var_qt_URL = "https://github.com/orestonce/action/releases/download/qt6.5.3/Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527.7z"
-              $var_mingw_URL = "https://github.com/orestonce/action/releases/download/qt6.5.3/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z"
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt6.5.3/Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt6.5.3/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z"
               $var_qt_dir_name = "Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull"
               $var_mingw_dir_name = "mingw64"
+              $var_md5_qt_7z = "7DAAB484962835718E49F908845328F6"
+              $var_md5_mingw_7z = "6278347DD0C9FD4FDF55665C0CAA9A87"
               break
             }
             default {
@@ -71,6 +77,9 @@ runs:
           
           $calculatedHash1 = (Get-FileHash -Path $var_qt_7z -Algorithm MD5).Hash
           $calculatedHash2 = (Get-FileHash -Path $var_mingw_7z -Algorithm MD5).Hash
+          
+          Write-Host "calculatedHash1 $calculatedHash1"
+          Write-Host "calculatedHash2 $calculatedHash2"
           
           if (-not $var_md5_qt_7z) {
             Write-Host "skip check md5 var_md5_qt_7z"
