@@ -184,5 +184,11 @@ runs:
           cd ${{ inputs.dir }}/qt_install/bin/
           chmod +x *
           echo "$(pwd)" >> $GITHUB_PATH
+          if [ -f "../QQtPatcher" ]; then
+            echo ">>>>>>>run QQtPatcher"
+            chmod +x ../QQtPatcher
+            ../QQtPatcher
+          fi
+          
           uname -a
           file qmake
