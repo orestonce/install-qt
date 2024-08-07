@@ -93,6 +93,7 @@ runs:
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           $oldContent | Add-Content -Path $env:GITHUB_PATH
           if (Test-Path "qt_install\QQtPatcher.exe") {
+            echo ">>>>>>>run QQtPatcher.exe"
             .\qt_install\QQtPatcher.exe
           }
           
