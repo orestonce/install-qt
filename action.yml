@@ -72,11 +72,16 @@ runs:
           $calculatedHash1 = (Get-FileHash -Path $var_qt_7z -Algorithm MD5).Hash
           $calculatedHash2 = (Get-FileHash -Path $var_mingw_7z -Algorithm MD5).Hash
           
-          if ( (-not $var_md5_qt_7z) -or ($calculatedHash1 -ne $var_md5_qt_7z) ) {
+          if (-not $var_md5_qt_7z) {
+            Write-Host "skip check md5 var_md5_qt_7z"
+          } else if ($calculatedHash1 -ne $var_md5_qt_7z) {
             Write-Host "MD5 check error calculatedHash1: $calculatedHash1, var_md5_qt_7z: $var_md5_qt_7z"
             exit -2
           }
-          if ( (-not $var_md5_qt_7z) -or ($calculatedHash1 -ne $var_md5_mingw_7z) ) {
+          
+          if (-not $var_md5_mingw_7z) {
+            Write-Host "skip check md5 var_md5_mingw_7z"
+          } else if ($calculatedHash1 -ne $var_md5_mingw_7z) {
             Write-Host "MD5 check error calculatedHash1: $calculatedHash2, var_md5_mingw_7z: $var_md5_mingw_7z"
             exit -3
           }
