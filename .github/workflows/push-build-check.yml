@@ -73,4 +73,5 @@ jobs:
           ls .
           qmake -makefile
           make
+          ls .
           file $var_proj_dir
