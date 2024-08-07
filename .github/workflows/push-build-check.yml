@@ -36,7 +36,6 @@ jobs:
           dir .
           cd $var_proj_dir
           dir .
-          $env:QMAKESPEC="win32-g++"
           qmake -makefile
           make
   macos-test:
