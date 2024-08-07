@@ -66,6 +66,12 @@ runs:
           
           dir $var_qt_7z
           dir $var_mingw_7z
+          
+          $calculatedHash1 = (Get-FileHash -Path $var_qt_7z -Algorithm MD5).Hash
+          $calculatedHash2 = (Get-FileHash -Path $var_mingw_7z -Algorithm MD5).Hash
+          
+          echo "hash1 var_qt_7z " $calculatedHash1
+          echo "hash2 var_mingw_7z " $calculatedHash2
      
           7z x $var_qt_7z
           7z x $var_mingw_7z
