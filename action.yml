@@ -179,12 +179,12 @@ runs:
           curl -L $var_qt_URL -o $var_qt_xz
           tar xf $var_qt_xz
           if [ $var_qt_dir_name != "qt_install" ]; then
-            move $var_qt_dir_name qt_install
+            mv $var_qt_dir_name qt_install
           fi
       - name: setup Qt env, macos
         shell: bash
         if: runner.os == 'macos'
         run: |
-          cd qt_install/bin/
+          cd ${{ inputs.dir }}/qt_install/bin/
           chmod +x *
           echo "$(pwd)" >> $GITHUB_PATH
