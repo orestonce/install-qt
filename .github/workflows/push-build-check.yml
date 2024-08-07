@@ -34,9 +34,9 @@ jobs:
           dir $var_proj_7z
           7z x $var_proj_7z
           dir .
-          echo "echo===" $var_proj_dir
           cd $var_proj_dir
           dir .
+          $env:QMAKESPEC="win32-g++"
           qmake -makefile
           make
   macos-test:
