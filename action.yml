@@ -85,9 +85,6 @@ runs:
             Write-Host "MD5 check error calculatedHash1: $calculatedHash2, var_md5_mingw_7z: $var_md5_mingw_7z"
             exit -3
           }
-          
-          echo "hash1 var_qt_7z " $calculatedHash1
-          echo "hash2 var_mingw_7z " $calculatedHash2
      
           7z x $var_qt_7z
           7z x $var_mingw_7z
