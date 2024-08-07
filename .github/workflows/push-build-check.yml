@@ -65,10 +65,10 @@ jobs:
           
           curl -L ${{ matrix.example_proj_url }} > $var_proj_7z
           
-          dir $var_proj_7z
+          ls $var_proj_7z
           7z x $var_proj_7z
-          dir .
+          ls .
           cd $var_proj_dir
-          dir .
+          ls .
           qmake -makefile
           make
