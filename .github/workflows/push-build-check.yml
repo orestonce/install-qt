@@ -8,7 +8,7 @@ jobs:
   windows-test:
     strategy:
       matrix:
-        version: [Qt4.8.7-Windows-x86-MinGW4.9.4-20200104, Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104, Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104, Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104]
+        version: [Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104, Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104, Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104]
         example_proj_url: ["https://github.com/orestonce/install-qt/releases/download/etc/helloworld.zip"]
     # The type of runner that the job will run on
     runs-on: windows-latest
