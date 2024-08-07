@@ -58,6 +58,13 @@ runs:
               $var_md5_mingw_7z = "6278347DD0C9FD4FDF55665C0CAA9A87"
               break
             }
+            "Qt6.7.2-Windows-x86_64-MinGW13.2.0-ucrt-20240621" {
+              $var_qt_URL = "https://sourceforge.net/projects/fsu0413-qtbuilds/files/Qt6.7/Windows-x86_64/MinGW-GCC/Qt6.7.2-Windows-x86_64-MinGW13.2.0-ucrt-20240621.7z"
+              $var_mingw_URL = "https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z"
+              $var_qt_dir_name = "Qt6.7.2-Windows-x86_64-MinGW13.2.0-ucrt"
+              $var_mingw_dir_name = "mingw64"
+              break
+            }
             default {
                echo "invalid version value: ${{ inputs.version }}"
                exit -1
