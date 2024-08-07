@@ -60,6 +60,8 @@ jobs:
           clang++ -v
       - name: build test
         run: |
+          set -x
+          set -e
           temp_str="${{ matrix.example_proj_url }}"
           var_proj_7z=${temp_str##*/}
           var_proj_dir="${var_proj_7z%%.*}"
