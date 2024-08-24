@@ -144,6 +144,7 @@ runs:
           if (Test-Path "qt_install\QQtPatcher.exe") {
             $env:PATH = $env:PATH + "${PWD}\qt_install\bin"
             $env:PATH = $env:PATH + "${PWD}\mingw_install\bin"
+            pwd
             echo ">>>>>>>run QQtPatcher.exe"
             .\qt_install\QQtPatcher.exe -V
           }
