@@ -145,7 +145,7 @@ runs:
             $env:PATH = $env:PATH + "${PWD}\qt_install\bin"
             $env:PATH = $env:PATH + "${PWD}\mingw_install\bin"
             echo ">>>>>>>run QQtPatcher.exe"
-            .\qt_install\QQtPatcher.exe -v
+            .\qt_install\QQtPatcher.exe -V
           }
           
       - name: install Qt to dir, macos
