@@ -141,8 +141,7 @@ runs:
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           $oldContent | Add-Content -Path $env:GITHUB_PATH
-          cd qt_install
-          if (Test-Path ".\QQtPatcher.exe") {
+          if (Test-Path ".\qt_install\QQtPatcher.exe") {
             $env:PATH = $env:PATH + ";${PWD}\qt_install\bin"
             $env:PATH = $env:PATH + ";${PWD}\mingw_install\bin"
             pwd
@@ -150,7 +149,7 @@ runs:
             qmake -query
             gcc -v
             echo ">>>>>>>run QQtPatcher.exe"
-            .\QQtPatcher.exe
+            .\qt_install\QQtPatcher.exe
           }
           
       - name: install Qt to dir, macos
