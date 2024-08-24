@@ -146,6 +146,7 @@ runs:
             $env:PATH = $env:PATH + ";${PWD}\qt_install\bin"
             $env:PATH = $env:PATH + ";${PWD}\mingw_install\bin"
             pwd
+            echo $env:PATH
             qmake -query
             gcc -v
             echo ">>>>>>>run QQtPatcher.exe"
