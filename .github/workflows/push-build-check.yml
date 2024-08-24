@@ -70,7 +70,7 @@ jobs:
           
           find . -name toolchain.prf
           
-          curl -L https://raw.githubusercontent.com/orestonce/install-qt/dev/toolchain.prf > qt_install/qt_install/mkspecs/features/toolchain.prf
+          curl -L https://raw.githubusercontent.com/orestonce/install-qt/dev/toolchain.prf?rand=1 > qt_install/qt_install/mkspecs/features/toolchain.prf
           
           ls $var_proj_7z
           7z x $var_proj_7z
