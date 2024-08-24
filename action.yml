@@ -145,6 +145,7 @@ runs:
             $env:PATH = $env:PATH + "${PWD}\qt_install\bin"
             $env:PATH = $env:PATH + "${PWD}\mingw_install\bin"
             echo ">>>>>>>run QQtPatcher.exe"
+            $ErrorActionPreference = "Continue"
             .\qt_install\QQtPatcher.exe
           }
           
