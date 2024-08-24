@@ -73,7 +73,7 @@ jobs:
           ls .
           cd $var_proj_dir
           ls .
-          qmake -makefile
+          qmake -makefile -Wall
           make
           ls .
           file ${var_proj_dir}.app/Contents/MacOS/${var_proj_dir}
