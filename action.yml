@@ -220,6 +220,7 @@ runs:
           echo "$(pwd)" >> $GITHUB_PATH
           
           file /bin/ls
+          file ../QQtPatcher
           
           if [ -f "../QQtPatcher" ]; then
             PATH=$PATH:`pwd`
