@@ -176,6 +176,10 @@ runs:
           set -x
           set -e
           case ${{ inputs.version }} in
+            "Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202")
+                var_qt_URL="https://github.com/orestonce/install-qt/releases/download/qt5.6.3/Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202.tar.xz"
+                var_qt_dir_name="Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202";
+                ;;
             "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527")
                 var_qt_URL="https://github.com/orestonce/action/releases/download/qt5.15.14/Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527.tar.xz"
                 var_qt_dir_name="Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework"
@@ -197,9 +201,11 @@ runs:
             mv $var_qt_dir_name qt_install
           fi
           
-          if [ $${{ inputs.version }} -eq "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527" ] ; then
-            curl -L https://github.com/orestonce/install-qt/releases/download/qt5.15.14/toolchain.prf > qt_install/qt_install/mkspecs/features/toolchain.prf
-          fi
+          case ${{ inputs.version }} in
+            "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527")
+                curl -L https://github.com/orestonce/install-qt/releases/download/qt5.15.14/toolchain.prf > ./qt_install/mkspecs/features/toolchain.prf
+                ;;
+          esac
       - name: setup Qt env, macos
         shell: bash
         if: runner.os == 'macos'
