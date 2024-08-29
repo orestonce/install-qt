@@ -221,6 +221,7 @@ runs:
           
           file /bin/ls
           file ../QQtPatcher
+          file qmake
           
           if [ -f "../QQtPatcher" ]; then
             PATH=$PATH:`pwd`
