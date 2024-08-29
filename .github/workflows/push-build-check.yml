@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-14, macos-13]
-        version: [Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527, Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621]
+        version: [Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202, Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527, Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621]
         example_proj_url: ["https://github.com/orestonce/install-qt/releases/download/etc/helloworld.zip"]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
