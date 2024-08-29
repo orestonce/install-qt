@@ -16,7 +16,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: install qt
-        uses: orestonce/install-qt@${{ env.BRANCH_NAME }}
+        uses: orestonce/install-qt@dev
         with:
           version: ${{ matrix.version }}
       - name: command test
@@ -50,7 +50,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: install qt
-        uses: orestonce/install-qt@${{ env.BRANCH_NAME }}
+        uses: orestonce/install-qt@dev
         with:
           version: ${{ matrix.version }}
       - name: command test
