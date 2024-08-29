@@ -18,54 +18,65 @@
         <td>runner.os</td>
         <td>version</td>
     	<td>arch</td>
+		<td>编译主机</td>
     	<td>优点</td>
     </tr>
     <tr>
         <td rowspan="9">windows</td>
 	    <td>Qt4.8.7-Windows-x86-MinGW4.9.4-20200104</td>
     	<td>x86</td>
-    	<td>构建主机为windows xp sp3, 编译生存的二进制支持windows xp</td>
+		<td>Windows XP SP3</td>
+    	<td>构建主机为windows xp sp3, 编译生成的二进制支持windows xp</td>
     </tr>
     <tr>
         <td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
-	<td>x86</td>
+		<td>x86</td>
+		<td>Windows XP SP3</td>
     </tr>
     <tr>
         <td>Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104</td>
-	<td>x86</td>
+		<td>x86</td>
+		<td></td>
     </tr>
     <tr>
         <td>Qt5.15.7-Windows-x86_64-MinGW8.1.0-staticFull-20221104</td>
-	<td>amd64</td>
+		<td>amd64</td>
+		<td></td>
     </tr>
     <tr>
         <td>Qt5.15.14-Windows-x86-MinGW8.1.0-staticFull-20240527</td>
-	<td>x86</td>
-	<td>macos版和windows版</td>
+		<td>x86</td>
+		<td>Windows 11 10.0.22631</td>
+		<td>macos版和windows版</td>
     </tr>
     <tr>
         <td>Qt5.15.14-Windows-x86_64-MinGW8.1.0-staticFull-20240527</td>
-	<td>amd64</td>
+		<td>amd64</td>
+		<td>Windows 11 10.0.22631</td>
         <td>macos版和windows版</td>
     </tr>
     <tr>
         <td>Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527</td>
-	<td>amd64</td>
+		<td>amd64</td>
+		<td>Windows 11 10.0.22631</td>
     </tr>
     <tr>
     <tr>
         <td>Qt6.7.2-Windows-x86_64-MinGW13.2.0-ucrt-20240621</td>
-	<td>amd64</td>
-	<td>最新版本Qt</td>
+		<td>amd64</td>
+		<td>Windows 11 10.0.22631</td>
+		<td>最新版本Qt</td>
     </tr>
     <tr>
 	<td rowspan="2">macos</td>
-	<td>Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527</td>
-	<td>arm64/amd64</td>
-	<td>macos版和windows版；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
+		<td>Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527</td>
+		<td>arm64/amd64</td>
+		<td>macOS 14.5</td>
+		<td>macos版和windows版；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
     </tr>
     <tr>
         <td>Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621</td>
-	<td>arm64/amd64</td>
-	<td>最新版本Qt；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
+		<td>arm64/amd64</td>
+		<td>macOS 14.5</td>
+		<td>最新版本Qt；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
     </tr>
