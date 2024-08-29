@@ -176,8 +176,12 @@ runs:
           set -x
           set -e
           case ${{ inputs.version }} in
+            "Qt4.8.7-macOS-x86_64-AppleClang6.1.0-noFramework-20200103")
+                var_qt_URL="https://github.com/orestonce/install-qt/releases/download/qt4.8.7/Qt4.8.7-macOS-x86_64-AppleClang6.1.0-noFramework-20200103.tar.xz"
+                var_qt_dir_name="Qt4.8.7-macOS-x86_64-AppleClang6.1.0-noFramework-20200103";
+                ;;
             "Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202")
-                var_qt_URL="https://sourceforge.net/projects/fsu0413-qtbuilds/files/Qt5.6/macOS-x86_64/Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202.tar.xz"
+                var_qt_URL="https://github.com/orestonce/install-qt/releases/download/qt5.6.3/Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202.tar.xz"
                 var_qt_dir_name="Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202";
                 ;;
             "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527")
