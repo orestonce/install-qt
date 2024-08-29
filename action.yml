@@ -182,7 +182,7 @@ runs:
                 ;;
             "Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202")
                 var_qt_URL="https://sourceforge.net/projects/fsu0413-qtbuilds/files/Qt5.6/macOS-x86_64/Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202.tar.xz"
-                var_qt_dir_name="Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework";
+                var_qt_dir_name="Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202";
                 ;;
             "Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621")
                 var_qt_URL="https://github.com/orestonce/install-qt/releases/download/qt6.7.2/Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621.tar.xz"
