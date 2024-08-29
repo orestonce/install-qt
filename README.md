@@ -69,11 +69,6 @@
     </tr>
     <tr>
 	<td rowspan="3">macos</td>
-		<td>Qt4.8.7-macOS-x86_64-AppleClang6.1.0-noFramework-20200103</td>
-		<td>amd64</td>
-		<td>OS X 10.10</td>
-    </tr>
-	<tr>
 		<td>Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202</td>
 		<td>amd64</td>
 		<td>OS X 10.10</td>
