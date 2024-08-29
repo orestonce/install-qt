@@ -201,7 +201,7 @@ runs:
             mv $var_qt_dir_name qt_install
           fi
           
-          if [ "$${{ inputs.version }}" -eq "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527" ] ; then
+          if [ "$${{ inputs.version }}" == "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527" ] ; then
             curl -L https://github.com/orestonce/install-qt/releases/download/qt5.15.14/toolchain.prf > qt_install/qt_install/mkspecs/features/toolchain.prf
           fi
       - name: setup Qt env, macos
