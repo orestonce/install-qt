@@ -219,6 +219,8 @@ runs:
           chmod +x *
           echo "$(pwd)" >> $GITHUB_PATH
           
+          file /bin/ls
+          
           if [ -f "../QQtPatcher" ]; then
             PATH=$PATH:`pwd`
             qmake -query
