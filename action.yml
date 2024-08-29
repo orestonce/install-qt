@@ -64,6 +64,24 @@ runs:
               $var_md5_mingw_7z = "55C00CA779471DF6FAF1C9320E49B5A9"
               break
             }
+            "Qt5.15.14-Windows-x86-MinGW8.1.0-staticFull-20240527" {
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.14/Qt5.15.14-Windows-x86-MinGW8.1.0-staticFull-20240527.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.14/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z"
+              $var_qt_dir_name = "Qt5.15.14-Windows-x86-MinGW8.1.0-staticFull"
+              $var_mingw_dir_name = "mingw32"
+              $var_md5_qt_7z = "1319A9657C1D8A22B8B1F0A66C7F51E3"
+              $var_md5_mingw_7z = "07583A272282F71E6E8701B2BF64FAFE"
+              break
+            }
+            "Qt5.15.14-Windows-x86_64-MinGW8.1.0-staticFull-20240527" {
+              $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.14/Qt5.15.14-Windows-x86_64-MinGW8.1.0-staticFull-20240527.7z"
+              $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt5.15.14/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
+              $var_qt_dir_name = "Qt5.15.14-Windows-x86_64-MinGW8.1.0-staticFull"
+              $var_mingw_dir_name = "mingw64"
+              $var_md5_qt_7z = "345D296C62C5D71A8A175584B290526C"
+              $var_md5_mingw_7z = "55C00CA779471DF6FAF1C9320E49B5A9"
+              break
+            }
             "Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527" {
               $var_qt_URL = "https://github.com/orestonce/install-qt/releases/download/qt6.5.3/Qt6.5.3-Windows-x86_64-MinGW13.2.0-ucrt-staticFull-20240527.7z"
               $var_mingw_URL = "https://github.com/orestonce/install-qt/releases/download/qt6.5.3/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1.7z"
@@ -93,6 +111,7 @@ runs:
      
           New-Item -ItemType Directory -Force -Path ${{ inputs.dir }}
           cd ${{ inputs.dir }}
+          
           Invoke-WebRequest -URI $var_qt_URL    -OutFile $var_qt_7z
           Invoke-WebRequest -URI $var_mingw_URL -OutFile $var_mingw_7z
           
@@ -141,9 +160,13 @@ runs:
           Add-Content $env:GITHUB_PATH "${PWD}\qt_install\bin"
           Add-Content $env:GITHUB_PATH "${PWD}\mingw_install\bin"
           $oldContent | Add-Content -Path $env:GITHUB_PATH
-          if (Test-Path "qt_install\QQtPatcher.exe") {
+          if (Test-Path ".\qt_install\QQtPatcher.exe") {
+            $env:PATH = $env:PATH + ";${PWD}\qt_install\bin"
+            $env:PATH = $env:PATH + ";${PWD}\mingw_install\bin"
+            qmake -query
             echo ">>>>>>>run QQtPatcher.exe"
             .\qt_install\QQtPatcher.exe
+            qmake -query
           }
           
       - name: install Qt to dir, macos
@@ -173,6 +196,10 @@ runs:
           if [ $var_qt_dir_name != "qt_install" ]; then
             mv $var_qt_dir_name qt_install
           fi
+          
+          if [ $${{ inputs.version }} -eq "Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527" ] ; then
+            curl -L https://github.com/orestonce/install-qt/releases/download/qt5.15.14/toolchain.prf > qt_install/qt_install/mkspecs/features/toolchain.prf
+          fi
       - name: setup Qt env, macos
         shell: bash
         if: runner.os == 'macos'
@@ -180,12 +207,16 @@ runs:
           find . -name QQtPatcher
           cd ${{ inputs.dir }}/qt_install/bin/
           chmod +x *
+          echo "$(pwd)" >> $GITHUB_PATH
+          
           if [ -f "../QQtPatcher" ]; then
+            PATH=$PATH:`pwd`
+            qmake -query
             echo ">>>>>>>run QQtPatcher"
             chmod +x ../QQtPatcher
             ../QQtPatcher
+            qmake -query
           fi
-          echo "$(pwd)" >> $GITHUB_PATH
           
           uname -a
           file qmake
