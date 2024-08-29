@@ -72,16 +72,17 @@
 		<td>Qt5.6.3-macOS-x86_64-AppleClang6.1.0-noFramework-20191202</td>
 		<td>amd64</td>
 		<td>OS X 10.10</td>
+		<td>只支持macos-12/13, 不支持macos-14</td>
 	</tr>
 	<tr>
 		<td>Qt5.15.14-macOS-Universal-AppleClang15.0.0-noFramework-20240527</td>
 		<td>arm64/amd64</td>
 		<td>macOS 14.5</td>
-		<td>macos版和windows版；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
+		<td>macos版和windows版；<br> 此编译器在macos-12/13、macos-14上分别输出amd64和arm64二进制</td>
 	</tr>
     <tr>
         <td>Qt6.7.2-macOS-Universal-AppleClang15.0.0-noFramework-20240621</td>
 		<td>arm64/amd64</td>
 		<td>macOS 14.5</td>
-		<td>最新版本Qt；<br> 此编译器在macos-13、macos-14上分别输出amd64和arm64二进制</td>
+		<td>最新版本Qt；<br> 此编译器在macos-12/13、macos-14上分别输出amd64和arm64二进制</td>
     </tr>
