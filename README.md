@@ -26,12 +26,13 @@
 	    <td>Qt4.8.7-Windows-x86-MinGW4.9.4-20200104</td>
     	<td>x86</td>
 		<td>Windows XP SP3</td>
-    	<td>编译生成的二进制支持windows xp</td>
+    	<td>动态库; 编译生成的二进制支持windows xp</td>
     </tr>
     <tr>
         <td>Qt5.6.3-Windows-x86-MinGW4.9.4-staticFull-20200104</td>
 		<td>x86</td>
 		<td>Windows XP SP3</td>
+		<td>静态库; 此为最后一个支持windows xp的Qt版本</td>
     </tr>
     <tr>
         <td>Qt5.15.7-Windows-x86-MinGW8.1.0-staticFull-20221104</td>
